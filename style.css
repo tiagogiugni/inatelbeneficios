@@ -250,15 +250,6 @@ img {
   letter-spacing: .01em;
 }
 
-.tier-price {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-text-mid);
-}
-.tier-price small {
-  font-weight: 400;
-  color: var(--color-text-light);
-}
 
 /* Actions row */
 .actions-row {
@@ -427,12 +418,19 @@ img {
 }
 
 /* Tier header colors */
-.comparison-table thead th.th-diamond  { background: var(--tier-diamond); }
-.comparison-table thead th.th-platinum { background: var(--tier-platinum); }
-.comparison-table thead th.th-gold     { background: var(--tier-gold); }
-.comparison-table thead th.th-silver   { background: var(--tier-silver); }
-.comparison-table thead th.th-bronze   { background: var(--tier-bronze); }
-.comparison-table thead th.th-startup  { background: var(--tier-startup); }
+.comparison-table thead th.th-diamond  { background: var(--tier-diamond); opacity: 0.55; }
+.comparison-table thead th.th-platinum { background: var(--tier-platinum); opacity: 0.55; }
+.comparison-table thead th.th-gold     { background: var(--tier-gold); opacity: 0.55; }
+.comparison-table thead th.th-silver   { background: var(--tier-silver); opacity: 0.55; }
+.comparison-table thead th.th-bronze   { background: var(--tier-bronze); opacity: 0.55; }
+.comparison-table thead th.th-startup  { background: var(--tier-startup); opacity: 0.55; }
+
+/* Highlighted (selected) columns */
+.comparison-table thead th.th-highlighted { opacity: 1; font-weight: 700; }
+.comparison-table tbody td.highlighted {
+  background-color: rgba(1, 116, 210, 0.04);
+  font-weight: 500;
+}
 
 .comparison-table tbody td {
   padding: 12px 16px;

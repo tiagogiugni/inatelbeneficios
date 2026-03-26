@@ -96,11 +96,11 @@
   /* ---------- DOM REFS ---------- */
 
   var checkboxes = document.querySelectorAll('input[name="cota"]');
-  var btnCompare = document.getElementById('btnCompare');
   var btnClear = document.getElementById('btnClear');
-  var emptyState = document.getElementById('emptyState');
-  var comparisonSection = document.getElementById('comparisonSection');
   var comparisonTable = document.getElementById('comparisonTable');
+
+  /* Tier order for full table display */
+  var TIERS_ORDER = ['DIAMOND', 'PLATINUM', 'GOLD', 'SILVER', 'BRONZE', 'STARTUP'];
 
   /* ---------- STATE MANAGEMENT ---------- */
 
@@ -114,9 +114,9 @@
     return selected;
   }
 
-  function updateButtonState() {
-    var count = getSelectedCotas().length;
-    btnCompare.disabled = count < 2;
+  function isSelectedCota(cotaKey) {
+    var selected = getSelectedCotas();
+    return selected.indexOf(cotaKey) !== -1;
   }
 
   /* ---------- TABLE GENERATION ---------- */
@@ -140,17 +140,19 @@
   function gerarTabela() {
     var selected = getSelectedCotas();
 
-    if (selected.length < 2) {
-      emptyState.hidden = false;
-      comparisonSection.hidden = true;
-      return;
-    }
-
-    // Build header
+    // Build header with all tiers
     var html = '<thead><tr><th>Benefícios</th>';
-    for (var c = 0; c < selected.length; c++) {
-      var cota = COTAS[selected[c]];
-      html += '<th class="' + cota.cssClass + '">' + escapeHtml(cota.label) + '</th>';
+    for (var t = 0; t < TIERS_ORDER.length; t++) {
+      var tierKey = TIERS_ORDER[t];
+      var cota = COTAS[tierKey];
+      var className = cota.cssClass;
+
+      // Highlight selected cotas
+      if (isSelectedCota(tierKey)) {
+        className += ' th-highlighted';
+      }
+
+      html += '<th class="' + className + '">' + escapeHtml(cota.label) + '</th>';
     }
     html += '</tr></thead>';
 
@@ -158,21 +160,19 @@
     html += '<tbody>';
     for (var b = 0; b < BENEFICIOS.length; b++) {
       html += '<tr><td>' + escapeHtml(BENEFICIOS[b]) + '</td>';
-      for (var s = 0; s < selected.length; s++) {
-        html += renderCell(COTAS[selected[s]].valores[b]);
+      for (var t = 0; t < TIERS_ORDER.length; t++) {
+        var tierKey = TIERS_ORDER[t];
+        var cellClass = isSelectedCota(tierKey) ? ' highlighted' : '';
+        var cellHtml = renderCell(COTAS[tierKey].valores[b]);
+        // Add class to cell
+        cellHtml = cellHtml.replace('<td>', '<td class="' + cellClass + '">');
+        html += cellHtml;
       }
       html += '</tr>';
     }
     html += '</tbody>';
 
     comparisonTable.innerHTML = html;
-
-    // Show / hide sections
-    emptyState.hidden = true;
-    comparisonSection.hidden = false;
-
-    // Smooth scroll to table
-    comparisonSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   /* ---------- CLEAR ---------- */
@@ -181,25 +181,20 @@
     for (var i = 0; i < checkboxes.length; i++) {
       checkboxes[i].checked = false;
     }
-    updateButtonState();
-    emptyState.hidden = false;
-    comparisonSection.hidden = true;
+    gerarTabela();
   }
 
   /* ---------- EVENT LISTENERS ---------- */
 
-  // Checkboxes → update button state
+  // Checkboxes → update table in real-time
   for (var i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].addEventListener('change', updateButtonState);
+    checkboxes[i].addEventListener('change', gerarTabela);
   }
-
-  // Compare button
-  btnCompare.addEventListener('click', gerarTabela);
 
   // Clear button
   btnClear.addEventListener('click', limparSelecao);
 
-  // Initial state
-  updateButtonState();
+  // Initial render - show all tiers
+  gerarTabela();
 
 })();
