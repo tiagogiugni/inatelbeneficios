@@ -4,7 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Programa de Benefícios — Associação Tecnológica xGMobile | Inatel</title>
-  <meta name="description" content="Compare as cotas de patrocínio da Associação Tecnológica do Centro de Competência EMBRAPII-Inatel em Redes 5G e 6G." />
+  <meta name="description" content="Compare as cotas de patrocínio da Associação Tecnológica do Centro de Competência EMBRAPII-Inatel em Redes 5G e 6G. Conheça os benefícios de cada categoria." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Programa de Benefícios — xGMobile | Inatel" />
+  <meta property="og:description" content="Compare as cotas de patrocínio da Associação Tecnológica do Centro de Competência EMBRAPII-Inatel em Redes 5G e 6G." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0B2545" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230174D2'/%3E%3C/svg%3E" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -28,12 +39,12 @@
   <!-- ========== MAIN ========== -->
   <main class="main-content">
 
-    <!-- Hero / Intro -->
+    <!-- Hero -->
     <section class="hero" aria-labelledby="hero-title">
       <h1 id="hero-title">Programa de Benefícios <span class="accent">xGMobile</span></h1>
       <p class="hero-desc">
-        Conheça as categorias da Associação Tecnológica e identifique a cota mais adequada para a sua organização.
-        Selecione as categorias abaixo para destacar e comparar os benefícios lado a lado.
+        Conheça as categorias da Associação Tecnológica e compare os benefícios oferecidos em cada cota.
+        Selecione as categorias abaixo para filtrar a comparação.
       </p>
     </section>
 
@@ -42,76 +53,107 @@
       <h2 id="tier-selection-title" class="sr-only">Seleção de categorias</h2>
 
       <div class="tier-grid" id="tierGrid" role="group" aria-label="Categorias disponíveis">
+
         <label class="tier-card" data-tier="DIAMOND">
           <input type="checkbox" name="cota" value="DIAMOND" />
           <span class="tier-card-inner">
-            <span class="tier-badge diamond"></span>
+            <span class="tier-badge diamond" aria-hidden="true"></span>
             <span class="tier-name">Diamond</span>
+            <svg class="tier-check" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M5 10l3.5 3.5L15 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </label>
 
         <label class="tier-card" data-tier="PLATINUM">
           <input type="checkbox" name="cota" value="PLATINUM" />
           <span class="tier-card-inner">
-            <span class="tier-badge platinum"></span>
+            <span class="tier-badge platinum" aria-hidden="true"></span>
             <span class="tier-name">Platinum</span>
+            <svg class="tier-check" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M5 10l3.5 3.5L15 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </label>
 
         <label class="tier-card" data-tier="GOLD">
           <input type="checkbox" name="cota" value="GOLD" />
           <span class="tier-card-inner">
-            <span class="tier-badge gold"></span>
+            <span class="tier-badge gold" aria-hidden="true"></span>
             <span class="tier-name">Gold</span>
+            <svg class="tier-check" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M5 10l3.5 3.5L15 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </label>
 
         <label class="tier-card" data-tier="SILVER">
           <input type="checkbox" name="cota" value="SILVER" />
           <span class="tier-card-inner">
-            <span class="tier-badge silver"></span>
+            <span class="tier-badge silver" aria-hidden="true"></span>
             <span class="tier-name">Silver</span>
+            <svg class="tier-check" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M5 10l3.5 3.5L15 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </label>
 
         <label class="tier-card" data-tier="BRONZE">
           <input type="checkbox" name="cota" value="BRONZE" />
           <span class="tier-card-inner">
-            <span class="tier-badge bronze"></span>
+            <span class="tier-badge bronze" aria-hidden="true"></span>
             <span class="tier-name">Bronze</span>
+            <svg class="tier-check" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M5 10l3.5 3.5L15 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </label>
 
         <label class="tier-card" data-tier="STARTUP">
           <input type="checkbox" name="cota" value="STARTUP" />
           <span class="tier-card-inner">
-            <span class="tier-badge startup"></span>
+            <span class="tier-badge startup" aria-hidden="true"></span>
             <span class="tier-name">Startup</span>
+            <svg class="tier-check" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M5 10l3.5 3.5L15 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </label>
+
       </div>
 
-      <div class="actions-row">
-        <button type="button" class="btn-clear" id="btnClear" aria-label="Limpar seleção">Limpar Seleção</button>
+      <!-- Selection summary & actions -->
+      <div class="selection-bar" id="selectionBar">
+        <p class="selection-summary" id="selectionSummary"></p>
+        <div class="selection-actions">
+          <button type="button" class="btn-toggle" id="btnHighlight" aria-pressed="false">Destacar diferenças</button>
+          <button type="button" class="btn-clear" id="btnClear">Limpar seleção</button>
+        </div>
       </div>
     </section>
 
-
-    <!-- Comparison Table -->
+    <!-- Comparison -->
     <section class="comparison-section" id="comparisonSection" aria-labelledby="comparison-title">
       <h2 id="comparison-title">Comparativo de Benefícios</h2>
-      <div class="table-wrapper">
-        <table class="comparison-table" id="comparisonTable" role="grid">
-          <!-- Generated by JS -->
+
+      <div class="table-wrapper" id="tableWrapper">
+        <table class="comparison-table" id="comparisonTable">
+          <!-- Generated by JS (includes caption) -->
         </table>
       </div>
 
+      <!-- Mobile card view (visible < 768px) -->
+      <div class="mobile-comparison" id="mobileComparison" aria-label="Comparativo de benefícios">
+        <!-- Generated by JS -->
+      </div>
+
       <!-- Footnotes -->
-      <aside class="footnotes" aria-label="Observações">
-        <p><span class="fn-mark">*</span> Modelo de consultoria direcionado para a demanda da empresa e que estejam dentro das competências instaladas no centro, em datas a serem divulgadas previamente para os membros da AT.</p>
-        <p><span class="fn-mark">**</span> Modelo de consultoria a partir de um catálogo oferecido pelos pesquisadores do centro em datas a serem divulgadas previamente para os membros da AT.</p>
-        <p><span class="fn-mark">***</span> O acesso aos laboratórios será disponibilizado em datas divulgadas pela coordenação do centro e se dará mediante reserva, tendo como prioridade as empresas associadas nas categorias Diamond, Platinum e Gold.</p>
-        <p><span class="fn-mark">****</span> Podem ser profissionais do quadro da empresa ou de parceiros.</p>
+      <aside class="footnotes" aria-labelledby="footnotes-title">
+        <h3 id="footnotes-title" class="footnotes-title">Observações</h3>
+        <div class="footnote">
+          <span class="fn-ref" aria-hidden="true">*</span>
+          <p>Modelo de consultoria direcionado para a demanda da empresa e que estejam dentro das competências instaladas no centro, em datas a serem divulgadas previamente para os membros da AT.</p>
+        </div>
+        <div class="footnote">
+          <span class="fn-ref" aria-hidden="true">**</span>
+          <p>Modelo de consultoria a partir de um catálogo oferecido pelos pesquisadores do centro em datas a serem divulgadas previamente para os membros da AT.</p>
+        </div>
+        <div class="footnote">
+          <span class="fn-ref" aria-hidden="true">***</span>
+          <p>O acesso aos laboratórios será disponibilizado em datas divulgadas pela coordenação do centro e se dará mediante reserva, tendo como prioridade as empresas associadas nas categorias Diamond, Platinum e Gold.</p>
+        </div>
+        <div class="footnote">
+          <span class="fn-ref" aria-hidden="true">****</span>
+          <p>Podem ser profissionais do quadro da empresa ou de parceiros.</p>
+        </div>
       </aside>
     </section>
 
@@ -121,7 +163,8 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <p class="footer-institution">Instituto Nacional de Telecomunicações — Inatel</p>
-      <p class="footer-address">Av. João de Camargo, 510 — Centro, Santa Rita do Sapucaí — MG, 37540-000 &nbsp;|&nbsp; +55 35 3471-9200</p>
+      <p class="footer-address">Av. João de Camargo, 510 — Centro, Santa Rita do Sapucaí — MG, 37540-000</p>
+      <p class="footer-contact">+55 35 3471-9200</p>
     </div>
   </footer>
 
