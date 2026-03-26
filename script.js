@@ -114,11 +114,6 @@
     return selected;
   }
 
-  function isSelectedCota(cotaKey) {
-    var selected = getSelectedCotas();
-    return selected.indexOf(cotaKey) !== -1;
-  }
-
   /* ---------- TABLE GENERATION ---------- */
 
   function renderCell(value) {
@@ -140,19 +135,15 @@
   function gerarTabela() {
     var selected = getSelectedCotas();
 
-    // Build header with all tiers
+    // Determine which tiers to display
+    var displayTiers = selected.length > 0 ? selected : TIERS_ORDER;
+
+    // Build header
     var html = '<thead><tr><th>Benefícios</th>';
-    for (var t = 0; t < TIERS_ORDER.length; t++) {
-      var tierKey = TIERS_ORDER[t];
+    for (var t = 0; t < displayTiers.length; t++) {
+      var tierKey = displayTiers[t];
       var cota = COTAS[tierKey];
-      var className = cota.cssClass;
-
-      // Highlight selected cotas
-      if (isSelectedCota(tierKey)) {
-        className += ' th-highlighted';
-      }
-
-      html += '<th class="' + className + '">' + escapeHtml(cota.label) + '</th>';
+      html += '<th class="' + cota.cssClass + '">' + escapeHtml(cota.label) + '</th>';
     }
     html += '</tr></thead>';
 
@@ -160,13 +151,9 @@
     html += '<tbody>';
     for (var b = 0; b < BENEFICIOS.length; b++) {
       html += '<tr><td>' + escapeHtml(BENEFICIOS[b]) + '</td>';
-      for (var t = 0; t < TIERS_ORDER.length; t++) {
-        var tierKey = TIERS_ORDER[t];
-        var cellClass = isSelectedCota(tierKey) ? ' highlighted' : '';
-        var cellHtml = renderCell(COTAS[tierKey].valores[b]);
-        // Add class to cell
-        cellHtml = cellHtml.replace('<td>', '<td class="' + cellClass + '">');
-        html += cellHtml;
+      for (var t = 0; t < displayTiers.length; t++) {
+        var tierKey = displayTiers[t];
+        html += renderCell(COTAS[tierKey].valores[b]);
       }
       html += '</tr>';
     }
